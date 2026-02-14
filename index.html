@@ -4,48 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hacker Terminal</title>
-    <style>
-        body {
-        margin: 0;
-        background: #000;
-        color: #00ff00;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 100vh;
-        font-family: "Courier New", monospace;
-    }
-
-    .terminal {
-        width: 80%;
-        max-width: 800px;
-        background: #001100;
-        color: #00ff00;
-        padding: 20px;
-        border-radius: 10px;
-        box-shadow: 0 0 20px #00ff00;
-        font-size: 18px;
-        line-height: 1.6;
-    }
-
-    .line {
-        margin-bottom: 8px;
-    }
-
-    /* Blinking dots */
-    .dots::after {
-        content: "";
-        animation: dots 1.5s infinite;
-    }
-
-    @keyframes dots {
-        0%   { content: ""; }
-        25%  { content: "."; }
-        50%  { content: ".."; }
-        75%  { content: "..."; }
-        100% { content: ""; }
-    }
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <!-- Hacker Terminal HTML Structure 
@@ -60,34 +19,6 @@
     -->
     <div class="terminal" id="terminal"></div>
 
-    <script>
-        const messages = [
-            "Initializing hack",
-            "Reading system files",
-            "Password files detected",
-            "Sending all passwords and personal files to server",
-            "Cleaning up"
-        ];
-
-        const  terminal = document.getElementById('terminal');
-
-        function randomDelay() {
-            return Math.floor(Math.random() * 7000) + 1000; // 1 to 7 seconds
-        }
-
-        async function startHack(){
-            for(const message of messages){ 
-                const line = document.createElement('div'); //👉 Browser me ek naya <div> ban raha hai Jaise terminal ki ek new line 📟
-                line.classList.add("line", "dots"); //👉 Us line ko "line" aur "dots" class de raha hai 🆔..Equivalent HTML: <div class="line dots"></div>
-                line.textContent = message; //👉 Us line me message set kar raha hai 📝..Equivalent HTML: <div class="line dots">Initializing hack</div>
-                terminal.appendChild(line); //👉 Us line ko terminal me add kar raha hai ➕
-
-                await new Promise(resolve => setTimeout(resolve, randomDelay())); //👉 Random delay ke liye wait kar raha hai ⏳
-                line.classList.remove("dots"); //👉 Dots class hata raha hai taaki dots blink na kare ❌..Equivalent HTML: <div class="line">Initializing hack</div>
-                line.textContent = message + "..."; //👉 Dots hata kar message ke end me three dots add kar raha hai ➕..Equivalent HTML: <div class="line">Initializing hack...</div>
-            }
-        }
-        startHack();
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
